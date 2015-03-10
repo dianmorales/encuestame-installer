@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+	<head>
+		<title>Welcome Panel for ${application.name}</title>
+	</head>
+	<body> 
+		<h2 align="left">Welcome to ${application.name}</h2>
+		<p>
+			<b>Version Number: </b> ${application.version}
+    		<br><b>Project Home : </b><a href="${encuestame.site}">${encuestame.site}</a>
+    		<br>Contributors :<ul>
+                    <li><a href="www.twitter.com/jotadeveloper">${application.contributor.backend}</a></li>
+                    <li><a href="https://twitter.com/dianmora">${application.contributor.frontend}</a></li>
+                </ul>
+    		<br><b>Contact : </b>${encuestame.contact.email}
+		</p>
+		<p>
+    		This installer will guide you through the installation process for installing and configuring
+    		${application.name} on your machine. 
+		</p>
+        <div id="sponsors">
+              <img src="atlassian">
+              <img src="jetbrain">
+        </div>
+	</body>
+</html>
