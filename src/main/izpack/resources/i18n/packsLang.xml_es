@@ -1,0 +1,9 @@
+<langpack>
+    <str id="title.database.panel" txt="Especificar sus credenciales para acceder a la Base de Datos"/>
+    <str id="db.type.selection.description" txt="Seleccione el tipo de Base de datos"/>
+    <str id="db.host.txt" txt="Introduzca el nombre del Equipo"/>
+    <str id="db.port.txt" txt="Introduzca el Numero de puerto"/>
+    <str id="db.name.txt" txt="Introduzca el Nombre de la Base de Datos"/>
+	<str id="db.username.txt" txt="Introduzca el usuario de Base de Datos"/>
+    <str id="db.password.txt" txt="Introduzca su Password"/>
+</langpack>
