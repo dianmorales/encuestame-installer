@@ -1,0 +1,5 @@
+*/target/*
+target/
+.idea/*
+installer/*.iml
+encuestame.installer.git.iml
