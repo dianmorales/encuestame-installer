@@ -1,0 +1,69 @@
+ <userInput> 
+    <panel id="dbase.connection.panel"> 
+        <field type="space"/>
+        <field type="title" id="title.database.panel" txt="Specify credentials data for accessing Database server" bold="true" size="1" />
+        <field type="combo" variable="db.type.selection" revalidate="yes">
+            <description align="left" txt="Select your Database type" id="db.type.selection.description"/>
+            <spec> 
+                <choice txt="mysql" value="mysql"/>
+            <!--><choice txt="postgres" value="postgres"/>
+				<choice txt="hsql" value="hsql"/> <-->
+			</spec>
+		</field>
+		
+		<!-- Host -->
+		<field type="text" align="left" variable="db.hostname">
+			<spec txt="Enter Server Host Name : " size="12" set="localhost" id="db.host.txt"/>
+			<validator class="com.izforge.izpack.panels.userinput.validator.NotEmptyValidator" txt="Invalid host name!">
+			</validator>
+		</field>
+		<!-- Port -->
+		<field type="text" align="left" variable="db.port">
+			<spec txt="Enter Port Number :" size="12" layout="N:5:5"  id="db.port.txt"/>
+			<validator class="com.izforge.izpack.panels.userinput.validator.IsPortValidator" txt="The specified Port is invalid" />
+		</field>
+
+		<!-- Database name -->
+		<field type="text" align="left" variable="db.name">
+			<spec txt="Enter Database Name:" size="20" id="db.name.txt"/>
+			<validator class="com.izforge.izpack.panels.userinput.validator.RegularExpressionValidator"
+				txt="Invalid Database name!">
+				<param name="pattern" value="[a-zA-Z0-9._-]+" />
+			</validator>
+		</field>
+		
+		<!-- Username -->
+		<field type="text" align="left" variable="db.username">
+			<spec txt="Enter Database Username:" size="12" id="db.username.txt"/>
+			<validator class="com.izforge.izpack.panels.userinput.validator.RegularExpressionValidator"
+				txt="Username is mandatory">
+				<param name="pattern" value="[a-zA-Z0-9._-]+" />
+			</validator>
+		</field>
+
+		<!-- Password -->
+		<field type="password" align="left" variable="db.password">
+			<spec>
+				<pwd txt="Enter Password:" size="12" id="db.password.txt"/> />
+			</spec>
+			<validator class="com.izforge.izpack.panels.userinput.validator.PasswordEqualityValidator"
+				txt="Password not match" id="Password do not match" />
+		</field>   
+
+			<!--<<field type="combo"  variable="db.datasource.classname"> 
+			<spec>
+			choice txt="com.mysql.jdbc.Driver" value="com.mysql.jdbc.Driver" conditionid="mysql.db.selected"/>
+				<choice txt="org.hsqldb.jdbcDriver" value="org.hsqldb.jdbcDriver" conditionid="hsql.db.selected"/> 
+				<choice txt="org.postgres.jdbcDriver" value="org.postgres.jdbcDriver" conditionid="postgres.db.selected"/>/>
+			</spec>
+		</field>     
+
+		<field type="combo"  variable="db.datasource.dialect"> 
+			<spec>
+				<choice txt="org.hibernate.dialect.MySQLInnoDBDialect" value="org.hibernate.dialect.MySQLInnoDBDialect" conditionid="mysql.ds.cn.selected"/>
+				<choice txt="org.hibernate.dialect.HSQLDialect" value="org.hibernate.dialect.HSQLDialect" conditionid="hsql.ds.cn.selected"/> 
+				<choice txt="org.hibernate.dialect.PostgreSQLDialect" value="org.hibernate.dialect.PostgreSQLDialect" conditionid="postgres.ds.cn.selected"/>/> 
+			</spec>
+		</field>   -->  
+	</panel>  
+</userInput>
