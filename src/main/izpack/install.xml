@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<installation version="5.0">
+    <!-->The information given in info, except for javaversion be shown in HelloPanel <-->
+    <info>
+        <appname>ENCUESTAME</appname>
+        <appversion>1.0.0</appversion>
+        <url>http://www.encuestame.org/</url>
+        <javaversion>1.7</javaversion>
+        <authors>
+            <author name="Diana Morales" email="dianmorales@gmail.com"/>
+            <author name="Juan Picado" email="juanpicado19@gmail.com"/>
+        </authors>
+    </info>
+
+    <variables>
+        <variable name="db.hostname" value="host"/>
+        <variable name="db.port" value="port"/>
+        <variable name="db.name" value="name"/>
+        <variable name="db.username" value="username"/>
+        <variable name="db.password" value="pass"/>
+    </variables>
+
+    <dynamicvariables>
+        <variable checkonce="false" ignorefailure="true" name="db.type.selection" value="${db.type.selection}"/>
+        <variable checkonce="false" ignorefailure="true" name="db.hostname" value="${db.host}"/>
+        <variable checkonce="false" ignorefailure="true" name="db.port" value="${db.port}"/>
+        <variable checkonce="false" ignorefailure="true" name="db.username" value="${db.username}"/>
+        <variable checkonce="false" ignorefailure="true" name="db.password" value="${db.password}"/>
+        <variable checkonce="false" ignorefailure="true" name="db.name" value="${db.name}"/>
+        <!-->
+           <variable checkonce="false" ignorefailure="true" name="db.datasource.classname" value="${db.datasource.classname}" /> <-->
+        <variable checkonce="false" ignorefailure="true" name="db.datasource.dialect"
+                  value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+        <variable checkonce="false" ignorefailure="true" name="db.datasource.classname" value="com.mysql.jdbc.Driver"/>
+    </dynamicvariables>
+
+    <!--> Define preference items of graphic user interfaces<-->
+    <guiprefs resizable="no" width="700" height="600">
+        <laf name="looks"><!-->Specifies the look and feel for a particular OS<-->
+            <param name="variant" value="windows"/>
+            <os family="windows"/>
+        </laf>
+        <modifier key="useHeadingPanel" value="yes"/>
+        <modifier key="headingLineCount" value="1"/>
+        <modifier key="headingFontSize" value="1.5"/>
+        <modifier key="headingBackgroundColor" value="0x00ffffff"/>
+        <modifier key="headingPanelCounter" value="progressbar"/>
+        <modifier key="headingPanelCounterPos" value="inNavigationPanel"/>
+    </guiprefs>
+
+    <!--> It is used to define the language packages that you want used in the installation. Not all are available. check DOC<-->
+    <locale>
+        <langpack iso3="eng"/>
+        <langpack iso3="spa" />
+  <!--> <langpack iso3="deu" />  -->
+    </locale>
+
+    <conditions>
+        <!--> <-->
+        <condition type="variable" id="mysql.db.selected">
+            <name>db.type.selection</name>
+            <value>mysql</value>
+        </condition>
+        <condition type="variable" id="hsql.db.selected">
+            <name>db..type.selection</name>
+            <value>hsql</value>
+        </condition>
+        <condition type="variable" id="postgres.db.selected">
+            <name>db.type.selection</name>
+            <value>postgres</value>
+        </condition>
+        <!--> <-->
+        <condition type="variable" id="hsql.ds.cn.selected">
+            <name>db.datasource.classname</name>
+            <value>org.hsqldb.jdbcDriver</value>
+        </condition>
+        <condition type="variable" id="mysql.ds.cn.selected">
+            <name>db.datasource.classname</name>
+            <value>com.mysql.jdbc.Driver</value>
+        </condition>
+        <condition type="variable" id="postgres.ds.cn.selected">
+            <name>db.datasource.classname</name>
+            <value>org.postgres.jdbcDriver</value>
+        </condition>
+    </conditions>
+
+    <resources>
+        <res id="Heading.image" src="resources/logos-enme/horizontal/encuestame_horizontal_small_alpha.png"/>
+        <res id="HTMLHelloPanel.info" src="resources/panels/hello.html"/>
+        <res id="HTMLInfoPanel.info" src="resources/panels/readme.html"/>
+        <res id="LicencePanel.licence" src="resources/panels/license.html"/>
+        <res id="userInputSpec.xml" src="resources/userInputSpec.xml"/>
+        <res id="atlassian" src="resources/logos-sponsors/atlassian/atlassian-rgb-navy-xsmall.png" />
+        <res id="jetbrain" src="resources/logos-sponsors/jetbrains/logo_jetbrain_xs.png" />
+
+    </resources>
+
+    <jar src="resources/mysql-connector-java-5.1.21.jar" stage="install"/>
+    <jar src="resources/log4j-1.2.17.jar" stage="install"/>
+    <jar src="resources/jdbcConnectionValidator.jar" stage="install"/>
+    <jar src="resources/commons-logging-1.2.jar" stage="install"/>
+    <!--> <jar src="resources/postgresql-9.2-1003-jdbc3.jar" stage="install" /> <-->
+
+
+    <!-->Panels or screens to show. Will be shown in the defined order<-->
+    <panels>
+        <panel classname="HTMLHelloPanel"/>
+        <panel classname="HTMLInfoPanel"/>
+        <panel classname="LicencePanel"/>
+        <panel classname="TargetPanel" id="targetpanel"/>
+        <panel classname="UserInputPanel" id="dbase.connection.panel">
+            <validator classname="org.encuestame.installer.izpack.JDBCConnectionValidator"/>
+        </panel>
+        <panel classname="PacksPanel" id="enme_pack_select"/>
+        <panel classname="InstallPanel" id="installpanel"/>
+        <panel classname="SummaryPanel" id="summarypanel"/>
+        <panel classname="SimpleFinishPanel"/>
+    </panels>
+
+    <packs>
+        <pack name="tomcat" preselected="yes" required="yes">
+            <description>Tomcat container.</description>
+            <fileset dir="tomcat/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/tomcat"/>
+        </pack>
+
+        <pack name="Basic Files" preselected="yes" required="yes">
+            <description>Basic Files </description>
+            <file src="property-files/encuestame-custom.properties" targetdir="$INSTALL_PATH/tomcat/lib"
+                  override="true" />
+            <parsable targetfile="$INSTALL_PATH/tomcat/lib/encuestame-custom.properties" type="javaprop"/>
+            <file src="resources/License.txt" targetdir="$INSTALL_PATH/"/>
+            <file src="resources/Readme.txt" targetdir="$INSTALL_PATH/"/>
+            <file src="war/encuestame.war" targetdir="$INSTALL_PATH/tomcat/webapps"/>
+        </pack>
+    </packs>
+</installation>
