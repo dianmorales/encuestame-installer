@@ -30,7 +30,6 @@ import com.izforge.izpack.api.installer.DataValidator;
  * @since  February, 27, 2015
  */
 public class JDBCConnectionValidator implements DataValidator {
-	/** **/
     private Log log = LogFactory.getLog(this.getClass());
 
     /** **/
@@ -45,14 +44,11 @@ public class JDBCConnectionValidator implements DataValidator {
     /** **/
     private String dbName;
 
-	/** **/
-	private String dbUser;
+    /** **/
+    private String dbUser;
 
-	/** **/
-	private String dbPassword;
-
-
-
+    /** **/
+    private String dbPassword; 
 
     /**
      *  Validate Database JDBC Connection
@@ -60,8 +56,10 @@ public class JDBCConnectionValidator implements DataValidator {
      * @return
      */
     public Status validateData(InstallData argsData) {
-		Status statusData = Status.ERROR;
-		try {
+		Status validationStatus = Status.ERROR;
+        Connection connection = null;
+        try {
+            //1 - Retrieve arguments from UserInputPanel
             dbType = argsData.getVariable("db.type.selection");
             dbHostname = argsData.getVariable("db.hostname");
             dbPort = argsData.getVariable("db.port");
@@ -69,111 +67,49 @@ public class JDBCConnectionValidator implements DataValidator {
             dbUser = argsData.getVariable("db.username");
             dbPassword = argsData.getVariable("db.password");
 
-			log.debug("******************************************************************************************");
-            log.debug(" Database type =" + dbType +
-                      " Database Host=" + dbHostname +
-                      " Database Port=" + dbPort +
-                      " Database user =" + dbUser +
-                      " Database Password=" + dbPassword +
-                      " Database=" + dbName);
             log.debug("******************************************************************************************");
-
-            registerJDBCDriver(this.dbType);
-
-
+            log.debug("User=" + dbUser + " password=" + dbPassword + " port=" + dbPort
+                    + " host=" + dbHostname + " database=" + dbName);
+            log.debug("******************************************************************************************");
+            //2- Register JDBC Driver classname
+            registerJDBCDriver();
             try {
-               verifyJDBCConnection(dbType, dbHostname, dbName, dbPort, dbUser, dbPassword);
-                statusData = Status.OK;
+                String url = "jdbc:mysql://"+dbHostname+":"+dbPort+"/"+dbName;
+                System.out.println("URL --------------->" +url);
+                connection = DriverManager
+                        .getConnection(url,dbUser, dbPassword);
+                validationStatus = validationStatus.OK;
+
             } catch (SQLException e) {
                 System.out.println("Connection Failed! Check output console");
                 e.printStackTrace();
-                return statusData.ERROR;
+                return validationStatus.ERROR;
             }
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+            return validationStatus.ERROR;
         }
-        return statusData;
-	}
+        return validationStatus;
+    }
 
     /**
-	 * Loads the JDBC Driver
-	 *
-	 * @throws Throwable
-	 */
-	private void registerJDBCDriver(final String dbtype) throws Throwable {
+     *
+     * @throws Throwable
+     */
+    private void registerJDBCDriver() throws Throwable {
         try {
-            if (dbtype.equals("mysql")) {
-                Class.forName("com.mysql.jdbc.Driver");
-            } else if (dbtype.equals("postgres")) {
-                Class.forName("org.postgresql.Driver");
-            }
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-           log.debug("Where is your JDBC Driver?");
-           e.printStackTrace();
-           return;
+            log.debug("Where is your MySQL JDBC Driver?");
+            e.printStackTrace();
+            return;
         }
-	}
-
-    /**
-     *
-     * @param dbtype
-     * @param hostname
-     * @param dbname
-     * @param port
-     * @param username
-     * @param password
-     * @throws SQLException
-     */
-    private void verifyJDBCConnection(final String dbtype,
-                                      final String hostname,
-                                      final String dbname,
-                                      final String port,
-                                      final String username,
-                                      final String password
-                                      ) throws SQLException {
-
-        String url = buildUrlConnection(dbtype, hostname, dbname, port, username, password);
-        Connection connection = DriverManager.getConnection(url);
-        connection.close();
     }
 
-    /**
-     *
-     * @param dbtype
-     * @param hostname
-     * @param dbname
-     * @param port
-     * @param username
-     * @param password
-     * @return
-     */
-    private String buildUrlConnection(final String dbtype,
-                                      final String hostname,
-                                      final String dbname,
-                                      final String port,
-                                      final String username,
-                                      final String password) {
-        StringBuffer url = new StringBuffer();
-
-        url.append("jdbc:"+dbtype+"://");
-        url.append(hostname).append(":");
-        url.append(port).append("/");
-    /*    if ((database != null) && (database != " ")) {
-            url.append(database);
-        }*/
-        url.append("?user="+username);
-        if ((password != null) && (password != " ")) {
-            url.append("&password="+password);
-        }
-        log.debug("URL to Database connection");
-        System.out.println("URL --------> "+ url.toString());
-    return url.toString();
-    }
 
     @Override
     public String getErrorMessageId() {
-        return "Can not connect to " + this.dbType +  "using given parameters! \n" +
+        return "Can not connect to "+this.dbType +"  using given parameters! \n" +
                 "Please verify that Database server is online and the parameters are correct.";
     }
 
@@ -185,5 +121,5 @@ public class JDBCConnectionValidator implements DataValidator {
     @Override
     public boolean getDefaultAnswer() {
         return false;
-    } 
+    }
 }
