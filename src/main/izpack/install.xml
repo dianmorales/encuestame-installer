@@ -13,20 +13,17 @@
     </info>
 
     <variables>
-        <variable name="db.hostname" value="host"/>
-        <variable name="db.port" value="port"/>
-        <variable name="db.name" value="name"/>
-        <variable name="db.username" value="username"/>
-        <variable name="db.password" value="pass"/>
+        <variable name="home.directory" value="home"/>
     </variables>
+
 
     <dynamicvariables>
         <variable checkonce="false" ignorefailure="true" name="db.type.selection" value="${db.type.selection}"/>
-        <variable checkonce="false" ignorefailure="true" name="db.hostname" value="${db.host}"/>
-        <variable checkonce="false" ignorefailure="true" name="db.port" value="${db.port}"/>
-        <variable checkonce="false" ignorefailure="true" name="db.username" value="${db.username}"/>
-        <variable checkonce="false" ignorefailure="true" name="db.password" value="${db.password}"/>
-        <variable checkonce="false" ignorefailure="true" name="db.name" value="${db.name}"/>
+        <variable checkonce="false" ignorefailure="true" name="db.hostname" value="localhost"/>
+        <variable checkonce="false" ignorefailure="true" name="db.port" value="3306"/>
+        <variable checkonce="false" ignorefailure="true" name="db.username" value="root"/>
+        <variable checkonce="false" ignorefailure="true" name="db.password" value=" "/>
+        <variable checkonce="false" ignorefailure="true" name="db.name" value=" "/>
         <!-->
            <variable checkonce="false" ignorefailure="true" name="db.datasource.classname" value="${db.datasource.classname}" /> <-->
         <variable checkonce="false" ignorefailure="true" name="db.datasource.dialect"
