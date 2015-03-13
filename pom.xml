@@ -186,19 +186,20 @@
                     <id>unpack</id>
                     <configuration>
                         <tasks>
-                            <untar compression="gzip" src="${izpack.staging}/apache-tomcat-${version.tomcat.file}.tar.gz" dest="${izpack.staging}/tomcat" /> 
-                        </tasks>  
+                            <untar compression="gzip" src="${izpack.staging}/apache-tomcat-${version.tomcat.file}.tar.gz" dest="${izpack.staging}/tomcat" />
+                            <mkdir dir="${izpack.staging}/home"/>
+                        </tasks>
                     </configuration>
                     <phase>process-resources</phase>
                     <goals>
                         <goal>run</goal>
                     </goals>
-               </execution> 
+               </execution>
             </executions>
           </plugin>
       <plugin>
        <artifactId>maven-dependency-plugin</artifactId>
-          <executions>         
+          <executions>
              <execution>
                <!-- copy izpack custom (custom panels, etc.) jars to izpack staging custom -->
                <id>copy-izpack-dependencies</id>
