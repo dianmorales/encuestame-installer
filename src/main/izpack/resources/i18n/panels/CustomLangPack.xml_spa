@@ -1,0 +1,21 @@
+<langpack>
+    
+    <!-- > UserInputPanel:Database <-->
+	<str id="title.database.panel" txt="Especificar sus credenciales para acceder a la Base de Datos"/>
+    <str id="db.type.selection.description" txt="Seleccione el tipo de Base de datos"/>
+    <str id="db.host.txt" txt="Introduzca el nombre del Equipo"/>
+    <str id="db.port.txt" txt="Introduzca el Numero de puerto"/>
+    <str id="db.name.txt" txt="Introduzca el Nombre de la Base de Datos"/>
+	<str id="db.username.txt" txt="Introduzca el usuario de Base de Datos"/>
+    <str id="db.password.txt" txt="Introduzca su Password"/>
+
+    <!-- > UserInputPanel:Captcha <-->
+    <str id="captcha.private.key.txt" txt="Introduzca la llave privada de Captcha"/>
+    <str id="captcha.public.key.txt" txt="Introduzca la llave publica de Captcha"/>
+	
+	<!-- > Target Panel <-->
+	<str id="TargetPanel.headline" txt="Seleccionar el directorio donde desea guardar instalacion."/>  
+    <str id="TargetPanel.browse" txt="Buscar."/>  
+    <str id="TargetPanel.summaryCaption" txt="Ruta de Instalacion "/>  
+    <str id="TargetPanel.warn" txt="El directorio ya existe!. Esta Usted seguro de realizar la instalacion aqui y probablemente sobreescribir archivos existentes."/>  
+</langpack>

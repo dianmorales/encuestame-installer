@@ -97,6 +97,11 @@
         <res id="Splash.image" src="resources/logos-enme/vertical/encuestame_v_small_alpha.png"/><-->
         <!-->Image to language selection panel  <-->
         <res id="installer.langsel.img" src="resources/logos-enme/vertical/encuestame_v_medium_alpha.png"/>
+        <res id="diamond.ico" src="resources/logos-enme/icon/diamond.png" />>
+        <res id="customicons.xml" src="resources/customicons.xml"/>
+        <!--> I18n <-->
+        <res id="CustomLangPack.xml_eng" src="resources/i18n/panels/CustomLangPack.xml_eng" />
+        <res id="CustomLangPack.xml_spa" src="resources/i18n/panels/CustomLangPack.xml_spa" />
     </resources>
 
     <jar src="resources/mysql-connector-java-5.1.21.jar" stage="install"/>
