@@ -45,6 +45,8 @@
         <modifier key="headingBackgroundColor" value="0x00ffffff"/>
         <modifier key="headingPanelCounter" value="progressbar"/>
         <modifier key="headingPanelCounterPos" value="inNavigationPanel"/>
+        <!--> Use Splash Screen(screen before first panel)
+        <modifier key="useSplashScreen" value="2000"/> <-->  
     </guiprefs>
 
     <!--> It is used to define the language packages that you want used in the installation. Not all are available. check DOC<-->
@@ -91,7 +93,8 @@
         <res id="userInputSpec.xml" src="resources/userInputSpec.xml"/>
         <res id="atlassian" src="resources/logos-sponsors/atlassian/atlassian-rgb-navy-xsmall.png" />
         <res id="jetbrain" src="resources/logos-sponsors/jetbrains/logo_jetbrain_xs.png" />
-
+        <!-->Splash Image Resource
+        <res id="Splash.image" src="resources/logos-enme/vertical/encuestame_v_small_alpha.png"/><-->
     </resources>
 
     <jar src="resources/mysql-connector-java-5.1.21.jar" stage="install"/>
