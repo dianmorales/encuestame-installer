@@ -13,7 +13,9 @@
     </info>
 
     <variables>
-        <variable name="home.directory" value="home"/>
+        <variable name="home.directory" value="home"/> 
+        <variable name="capcha.private.key" value=" "/>
+        <variable name="capcha.private.key" value=" "/>
     </variables>
 
 
@@ -108,6 +110,7 @@
         <panel classname="UserInputPanel" id="dbase.connection.panel">
             <validator classname="org.encuestame.installer.izpack.JDBCConnectionValidator"/>
         </panel>
+        <panel classname="UserInputPanel" id="captcha.properties.panel"/>
         <panel classname="PacksPanel" id="enme_pack_select"/>
         <panel classname="InstallPanel" id="installpanel"/>
         <panel classname="SummaryPanel" id="summarypanel"/>

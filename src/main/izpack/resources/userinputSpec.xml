@@ -66,4 +66,21 @@
 			</spec>
 		</field>   -->  
 	</panel>  
+	<panel id="captcha.properties.panel"> 
+        <field type="title" id="captcha.configuration.panel" txt="Captcha Configuration" bold="true" size="1" />
+		<field type="text" align="left" variable="capcha.private.key">
+			<spec txt="Enter Captcha Private key:" size="12" id="captcha.private.key.txt"/>
+				<validator class="com.izforge.izpack.panels.userinput.validator.RegularExpressionValidator"
+				txt="Private Key is mandatory">
+					<param name="pattern" value="[a-zA-Z0-9._-]+" />
+			</validator>
+		</field>
+		<field type="text" align="left" variable="capcha.public.key">
+			<spec txt="Enter Captcha Public key:" size="12" id="captcha.public.key.txt"/>
+			<validator class="com.izforge.izpack.panels.userinput.validator.RegularExpressionValidator"
+				txt="Public Key is mandatory">
+				<param name="pattern" value="[a-zA-Z0-9._-]+" />
+			</validator>
+		</field> 
+	</panel> 
 </userInput>
