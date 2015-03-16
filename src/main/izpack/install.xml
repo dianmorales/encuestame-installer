@@ -95,6 +95,8 @@
         <res id="jetbrain" src="resources/logos-sponsors/jetbrains/logo_jetbrain_xs.png" />
         <!-->Splash Image Resource
         <res id="Splash.image" src="resources/logos-enme/vertical/encuestame_v_small_alpha.png"/><-->
+        <!-->Image to language selection panel  <-->
+        <res id="installer.langsel.img" src="resources/logos-enme/vertical/encuestame_v_medium_alpha.png"/>
     </resources>
 
     <jar src="resources/mysql-connector-java-5.1.21.jar" stage="install"/>
