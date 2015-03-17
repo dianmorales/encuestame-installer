@@ -124,6 +124,7 @@
         <panel classname="PacksPanel" id="enme_pack_select"/>
         <panel classname="InstallPanel" id="installpanel"/>
         <panel classname="SummaryPanel" id="summarypanel"/>
+        <panel classname="HTMLInfoPanel" id="sponsors"/>
         <panel classname="SimpleFinishPanel"/>
     </panels>
 
