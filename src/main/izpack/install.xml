@@ -115,7 +115,9 @@
 
         <!--> I18n <-->
         <res id="CustomLangPack.xml_eng" src="resources/i18n/panels/CustomLangPack.xml_eng" />
-        <res id="CustomLangPack.xml_spa" src="resources/i18n/panels/CustomLangPack.xml_spa" />      
+        <res id="CustomLangPack.xml_spa" src="resources/i18n/panels/CustomLangPack.xml_spa" /> 
+        <res id="packsLang.xml_eng" src="resources/i18n/panels/packsLang.xml_eng" />      
+        <res id="packsLang.xml_spa" src="resources/i18n/panels/packsLang.xml_spa" />      
     </resources>
 
     <jar src="resources/mysql-connector-java-5.1.21.jar" stage="install"/>

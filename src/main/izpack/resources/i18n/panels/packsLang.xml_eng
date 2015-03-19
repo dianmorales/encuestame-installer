@@ -1,0 +1,8 @@
+<langpack>
+  <!--><-->
+  <str id="core.package" txt="Anwendungs-Kern"/>
+  <str id="core.package.description" txt="Unbedingt notwendige Dateien für das Betreiben dieser Anwendung"/>
+
+  <str id="servers.package" txt="Tomcat Container"/>
+  <str id="servers.package.description" txt="Tomcat server container desc"/>
+</langpack>
