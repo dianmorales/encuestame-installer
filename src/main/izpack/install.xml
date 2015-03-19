@@ -39,6 +39,7 @@
             <param name="variant" value="windows"/>
             <os family="windows"/>
         </laf>
+        <modifier key="useHeadingForSummary" value="yes"/>
         <modifier key="useHeadingPanel" value="yes"/>
         <modifier key="headingLineCount" value="1"/>
         <modifier key="headingFontSize" value="1.5"/>
@@ -53,7 +54,7 @@
     <locale>
         <langpack iso3="eng"/>
         <langpack iso3="spa" />
-  <!--> <langpack iso3="deu" />  -->
+        <!--> <langpack iso3="deu" />  -->
     </locale>
 
     <conditions>
@@ -86,22 +87,35 @@
     </conditions>
 
     <resources>
+        <!-->Imagen<-->
         <res id="Heading.image" src="resources/logos-enme/horizontal/encuestame_horizontal_small_alpha.png"/>
-        <res id="HTMLHelloPanel.info" src="resources/panels/hello.html"/>
-        <res id="HTMLInfoPanel.info" src="resources/panels/readme.html"/>
-        <res id="LicencePanel.licence" src="resources/panels/license.html"/>
-        <res id="userInputSpec.xml" src="resources/userInputSpec.xml"/>
         <res id="atlassian" src="resources/logos-sponsors/atlassian/atlassian-rgb-navy-xsmall.png" />
         <res id="jetbrain" src="resources/logos-sponsors/jetbrains/logo_jetbrain_xs.png" />
+        <res id="installer.langsel.img" src="resources/logos-enme/vertical/encuestame_v_small_alpha.png"/> <!-->Image to language selection panel  <--> 
+        <!--> Custom Panels <-->
+        
+        <res id="HTMLHelloPanel.info" src="resources/panels/eng/hello.html"/> 
+        <res id="HTMLInfoPanel.info" src="resources/panels/eng/readme.html"/> 
+        <res id="LicencePanel.licence" src="resources/panels/eng/license.html"/>
+        <res id="HTMLInfoPanel.sponsors" src="resources/panels/eng/sponsors.html"/> 
+        
+        
+        <!--> Custom Panels SPA<-->
+        <res id="HTMLHelloPanel.info_spa" parse="yes" src="resources/panels/spa/hello_spa.html" />
+        <res id="HTMLInfoPanel.info_spa" src="resources/panels/spa/readme_spa.html"/>
+        <res id="LicencePanel.licence_spa" src="resources/panels/spa/license_spa.html"/>
+        <res id="HTMLInfoPanel.sponsors_spa" src="resources/panels/spa/sponsors_spa.html"/>
+
+
+        <res id="userInputSpec.xml" src="resources/userInputSpec.xml"/>
+        
         <!-->Splash Image Resource
         <res id="Splash.image" src="resources/logos-enme/vertical/encuestame_v_small_alpha.png"/><-->
-        <!-->Image to language selection panel  <-->
-        <res id="installer.langsel.img" src="resources/logos-enme/vertical/encuestame_v_medium_alpha.png"/>
-        <res id="diamond.ico" src="resources/logos-enme/icon/diamond.png" />>
-        <res id="customicons.xml" src="resources/customicons.xml"/>
+        <!-->Image to language selection panel  <--> 
+
         <!--> I18n <-->
         <res id="CustomLangPack.xml_eng" src="resources/i18n/panels/CustomLangPack.xml_eng" />
-        <res id="CustomLangPack.xml_spa" src="resources/i18n/panels/CustomLangPack.xml_spa" />
+        <res id="CustomLangPack.xml_spa" src="resources/i18n/panels/CustomLangPack.xml_spa" />      
     </resources>
 
     <jar src="resources/mysql-connector-java-5.1.21.jar" stage="install"/>
