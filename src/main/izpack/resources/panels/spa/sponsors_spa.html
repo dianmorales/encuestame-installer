@@ -1,24 +1,23 @@
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
-	<html>
+<html>
 	<head>
-		<title>Welcome Panel for ${application.name}</title>
+		<title>Welcome Panel to ${application.name} Setup</title> 
 	</head>
+
 	<body> 
-		<div>
-			<p>	
-				<b><a>${application.name}</a></b>
+	 <div>
+		 
+				<a>${application.name}</a>
 				<b>Version  </b> ${application.version}
-				<br><b>Projecto en Github: </b><a href="${encuestame.site}">${encuestame.site}</a>
+				Projecto en Github: <a href="${encuestame.site}">${encuestame.site}</a>
 				<br>Autores :<ul>
 				<li><a href="https://github.com/dianmorales">${application.contributor.backend}</a></li>
 				<li><a href="https://github.com/jotadeveloper">${application.contributor.frontend}</a></li>
 				<li><a href="https://github.com/orgs/encuestame/people">Contributors :</a></li>
 				
 			</ul>
-			<br><b>Contacto : </b>${encuestame.contact.email}
+			 <b>Contacto : </b>${encuestame.contact.email}
 			<b><a href="{application.name}"></a>Documentation : </b>${encuestame.contact.email}
-		</p>
+		 
 
 	</div>
 
@@ -26,5 +25,5 @@
 		<img src="atlassian">
 		<img src="jetbrain">
 	</div>
-</body>
+	</body>
 </html>

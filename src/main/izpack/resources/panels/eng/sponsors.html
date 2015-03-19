@@ -1,23 +1,23 @@
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
-	<html>
+<html>
 	<head>
-		<title>Welcome Panel for ${application.name}</title>
+		<title>Welcome Panel to ${application.name} Setup</title> 
 	</head>
+
 	<body> 
-		<div>
-			<p>
-				<b><a>${application.name}</a></b>
-				<b>Version Number: </b> ${application.version}
-				<br><b>Project in Github: </b><a href="${encuestame.site}">${encuestame.site}</a>
-				<br>Authors :<ul>
-				<li><a href="www.twitter.com/jotadeveloper">${application.contributor.backend}</a></li>
-				<li><a href="https://twitter.com/dianmora">${application.contributor.frontend}</a></li>
+	 <div>
+		 
+				<a>${application.name}</a>
+				<b>Version  </b> ${application.version}
+				Projecto en Github: <a href="${encuestame.site}">${encuestame.site}</a>
+				<br>Autores :<ul>
+				<li><a href="https://github.com/dianmorales">${application.contributor.backend}</a></li>
+				<li><a href="https://github.com/jotadeveloper">${application.contributor.frontend}</a></li>
 				<li><a href="https://github.com/orgs/encuestame/people">Contributors :</a></li>
+				
 			</ul>
-			<br><b>Contact : </b>${encuestame.contact.email}
+			 <b>Contacto : </b>${encuestame.contact.email}
 			<b><a href="{application.name}"></a>Documentation : </b>${encuestame.contact.email}
-		</p>
+		 
 
 	</div>
 
@@ -25,5 +25,5 @@
 		<img src="atlassian">
 		<img src="jetbrain">
 	</div>
-</body>
+	</body>
 </html>
