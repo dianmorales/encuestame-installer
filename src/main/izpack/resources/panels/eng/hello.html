@@ -1,14 +1,29 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-		<title>Welcome Panel to ${application.name} Setup</title> 
-	</head>
+		<title>Bienvenido a {application.name} Asistente de Instalacion</title> 
+		<style type="text/css">
+			body{
+			  font-family : Verdana, Arial;
+			}
 
+			.container{
+			  margin:10px; 
+			}
+
+			p {
+			  font-size: 9px;
+			  margin: 10px; 
+			} 
+		</style>
+	</head>  
 	<body> 
-		<div class="welcome">Welcome to ${application.name} Setup Wizard</h2>
-		<div id="install"> This will install Encuestame - Online Social Surveys on your computer. The wizard will lead you step by step through the installation
-		</div>
-        <div>It is recommended that you close all other applications before continuing</p>
-        <div>Click Next to continue, or Cancel to exit Setup</p> 
+		<div class="container"> 
+			<h2>Welcome to ${application.name} Setup Wizard</h2>
+			<div>
+				<p>This will install Encuestame - Online Social Surveys on your computer. The wizard will lead you step by step through the installation</p>
+				<p>It is recommended that you close all other applications before continuing</p>
+        		<p>Click Next to continue, or Cancel to exit Setup</p> 
+			</div>
+		</div>  
 	</body>
 </html>

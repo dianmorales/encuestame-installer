@@ -4,26 +4,25 @@
 	</head>
 
 	<body> 
-	 <div>
-		 
-				<a>${application.name}</a>
-				<b>Version  </b> ${application.version}
-				Projecto en Github: <a href="${encuestame.site}">${encuestame.site}</a>
-				<br>Autores :<ul>
+	 <div> 
+			<a>${application.name}</a>
+			<b>Version  </b> ${application.version}
+				Project hosted in Github: <a href="${encuestame.site}">${encuestame.site}</a>
+				<br>Authors :<ul>
 				<li><a href="https://github.com/dianmorales">${application.contributor.backend}</a></li>
 				<li><a href="https://github.com/jotadeveloper">${application.contributor.frontend}</a></li>
 				<li><a href="https://github.com/orgs/encuestame/people">Contributors :</a></li>
 				
 			</ul>
-			 <b>Contacto : </b>${encuestame.contact.email}
-			<b><a href="{application.name}"></a>Documentation : </b>${encuestame.contact.email}
-		 
-
+			 <b>Contact : </b>${encuestame.contact.email}
+			<b><a href="{application.documentation.url}"></a>Documentation : </b>
 	</div>
 
 	<div id="sponsors">
-		<img src="atlassian">
-		<img src="jetbrain">
+		<div class="row">
+			<div><img src="atlassian"></div>
+			<div><img src="jetbrain"></div> 
+		</div> 
 	</div>
 	</body>
 </html>
