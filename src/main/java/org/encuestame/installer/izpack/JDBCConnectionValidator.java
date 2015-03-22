@@ -74,7 +74,7 @@ public class JDBCConnectionValidator implements DataValidator {
             //2- Register JDBC Driver classname
             registerJDBCDriver();
             try {
-                String url = "jdbc:mysql://"+dbHostname+":"+dbPort+"/"+dbName;
+                String url = "jdbc:mysql://"+dbHostname+":"+dbPort+"/"+dbName +"?createDatabaseIfNotExist=true";
                 System.out.println("URL --------------->" +url);
                 connection = DriverManager
                         .getConnection(url,dbUser, dbPassword);
