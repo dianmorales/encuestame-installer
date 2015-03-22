@@ -29,6 +29,8 @@
         <application.contributor.backend>Diana Paola Morales</application.contributor.backend>
         <application.contributor.frontend>Juan Carlos Picado</application.contributor.frontend>
         <application.version>Encuestame Installer 1.0</application.version>
+        <application.documentation.url>http://www.encuestame.org/wiki/display/DOC/Encuestame+Documentation</application.documentation.url>
+        <application.documentation.recaptcha>http://www.encuestame.org/wiki/display/DOC/Encuestame+Documentation</application.documentation.recaptcha>
     </properties>
 
   <!-- Developers-->
