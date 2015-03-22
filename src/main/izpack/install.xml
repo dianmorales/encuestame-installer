@@ -10,6 +10,9 @@
             <author name="Diana Morales" email="dianmorales@gmail.com"/>
             <author name="Juan Picado" email="juanpicado19@gmail.com"/>
         </authors>
+        <!--><pack200/><-->
+        <uninstaller name="${application.name}-uninstaller.jar"></uninstaller>
+         <summarylogfilepath>$INSTALL_PATH/encuestame_install.log</summarylogfilepath>
     </info>
 
     <variables>
@@ -117,11 +120,11 @@
         <res id="CustomLangPack.xml_eng" src="resources/i18n/panels/CustomLangPack.xml_eng" />
         <res id="CustomLangPack.xml_spa" src="resources/i18n/panels/CustomLangPack.xml_spa" /> 
         <res id="packsLang.xml_eng" src="resources/i18n/panels/packsLang.xml_eng" />      
-        <res id="packsLang.xml_spa" src="resources/i18n/panels/packsLang.xml_spa" />      
+        <res id="packsLang.xml_spa" src="resources/i18n/panels/packsLang.xml_spa" />   
     </resources>
 
     <jar src="resources/mysql-connector-java-5.1.21.jar" stage="install"/>
-    <jar src="resources/log4j-1.2.17.jar" stage="install"/>
+     <!-->  <jar src="resources/log4j-1.2.17.jar" stage="install"/> <-->
     <jar src="resources/jdbcConnectionValidator.jar" stage="install"/>
     <jar src="resources/commons-logging-1.2.jar" stage="install"/>
     <!--> <jar src="resources/postgresql-9.2-1003-jdbc3.jar" stage="install" /> <-->
@@ -136,7 +139,8 @@
         <panel classname="UserInputPanel" id="dbase.connection.panel">
             <validator classname="org.encuestame.installer.izpack.JDBCConnectionValidator"/>
         </panel>
-        <panel classname="UserInputPanel" id="captcha.properties.panel"/>
+        <panel classname="UserInputPanel" id="recaptcha"/>
+        <!--><panel classname="DataCheckPanel" /><-->
         <panel classname="PacksPanel" id="enme_pack_select"/>
         <panel classname="InstallPanel" id="installpanel"/>
         <panel classname="SummaryPanel" id="summarypanel"/>

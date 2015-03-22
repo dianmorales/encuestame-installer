@@ -4,5 +4,5 @@
     <str id="core.package.description" txt="Archivos Basicos para instalacion"/>
 
     <str id="server.package" txt="Tomcat Contenedor"/>
-    <str id="server.package.description" txt="Tomcat contenedor web desc"/>
+    <str id="server.package.description" txt="Contenedor servlet Tomcat"/>
 </langpack>
