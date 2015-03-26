@@ -19,6 +19,8 @@
         <variable name="home.directory" value="home"/> 
         <variable name="capcha.private.key" value=" "/>
         <variable name="capcha.private.key" value=" "/>
+        <variable name="hsql.directory" value="hsqldb"/> 
+        <variable name="hsql.mem" value="jdbc:hsqldb:mem:."/> 
     </variables>
 
 
@@ -34,6 +36,8 @@
         <variable checkonce="false" ignorefailure="true" name="db.datasource.dialect"
                   value="org.hibernate.dialect.MySQLInnoDBDialect"/>
         <variable checkonce="false" ignorefailure="true" name="db.datasource.classname" value="com.mysql.jdbc.Driver"/>
+        <variable checkonce="false" ignorefailure="true" name="hsqldb.file.name" value=" "/>
+        <variable checkonce="false" ignorefailure="true" name="select.hsql.url.radio" value=" "/>
     </dynamicvariables>
 
     <!--> Define preference items of graphic user interfaces<-->
@@ -87,6 +91,23 @@
             <name>db.datasource.classname</name>
             <value>org.postgres.jdbcDriver</value>
         </condition>
+        <condition type="variable" id="database.mysql.radio.selection">
+            <name>db.type.selection</name>
+            <value>mysql</value>
+        </condition>
+        <condition type="variable" id="database.hsql.radio.selection">
+            <name>db.type.selection</name>
+            <value>hsql</value>
+        </condition>
+        <condition type="variable" id="hsql.url.radio.selection">
+            <name>select.hsql.url.radio</name>
+            <value>file</value>
+        </condition>
+        <condition type="and" id="hsqlParametersCondition">
+            <condition type="ref" refid="hsql.url.radio.selection"/>
+         <condition type="ref" refid="database.hsql.radio.selection" />
+        </condition>
+        
     </conditions>
 
     <resources>
@@ -136,7 +157,8 @@
         <panel classname="HTMLInfoPanel"/>
         <panel classname="LicencePanel"/>
         <panel classname="TargetPanel" id="targetpanel"/>
-        <panel classname="UserInputPanel" id="dbase.connection.panel">
+        <panel classname="UserInputPanel" id="select.database.panel"/>
+        <panel classname="UserInputPanel" id="dbase.connection.panel" condition="database.mysql.radio.selection">
             <validator classname="org.encuestame.installer.izpack.JDBCConnectionValidator"/>
         </panel>
         <panel classname="UserInputPanel" id="recaptcha"/>
@@ -156,9 +178,10 @@
 
         <pack name="Basic Files" preselected="yes" required="yes">
             <description>Basic Files </description>
-            <file src="property-files/encuestame-custom.properties" targetdir="$INSTALL_PATH/tomcat/lib"
+            <file src="property-files/encuestame-config-custom.properties" targetdir="$INSTALL_PATH/tomcat/lib"
                   override="true" />
-            <parsable targetfile="$INSTALL_PATH/tomcat/lib/encuestame-custom.properties" type="javaprop"/>
+            <parsable targetfile="$INSTALL_PATH/tomcat/lib/encuestame-config-custom.properties" type="javaprop"/>
+            <file src="home/" targetdir="$INSTALL_PATH/"/>
             <file src="resources/License.txt" targetdir="$INSTALL_PATH/"/>
             <file src="resources/Readme.txt" targetdir="$INSTALL_PATH/"/>
             <file src="war/encuestame.war" targetdir="$INSTALL_PATH/tomcat/webapps"/>
