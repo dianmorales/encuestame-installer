@@ -1,5 +1,10 @@
 <langpack>
-	
+	<!-- > UserInputPanel:Database <-->
+    <str id="select.database.radio.txt" txt=" Select the database to be used in the installation "/>
+    <str id="select.hsql.url.txt" txt="Select the type of database to use "/>    
+    <str id="hsqldb.file.name" txt="Enter the name you give to your Database"/>    
+    <str id="staticText.hsql.url.name" txt="Note: Installation path $INSTALL_PATH$FILE_SEPARATOR${hsql.directory}"/>    
+
 	<!-- > UserInputPanel:Database <-->
 	<str id="title.database.panel" txt="Specify credentials data for accessing Database server"/>
     <str id="db.type.selection.description" txt="Select your Database type"/>
