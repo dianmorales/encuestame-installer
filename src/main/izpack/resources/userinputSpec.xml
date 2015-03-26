@@ -1,18 +1,52 @@
  <userInput> 
+ 	<panel id="select.database.panel" order="0" summaryKey="select.database.summaryKey"> 
+ 		<field type="radio" variable="db.type.selection">
+			<description align="left" txt=" " id="select.database.radio.txt"/>
+  			<spec>
+				<choice txt="hsql" id="db.radio.hsql" value="hsql"/>
+				<choice txt="mysql" id="db.radio.mysql" value="mysql" set="true"/>
+				<choice txt="postgres" id="db.radio.postgres" value="postgres"/> 
+  			</spec>
+		</field>
+		<field type="space"/>
+		<field type="divider"/>
+		<field type="radio" variable="select.hsql.url.radio" conditionid="database.hsql.radio.selection">
+			<description align="left" txt="Select the url" id="select.hsql.url.txt"/>
+  			<spec>
+				<choice txt="In memory" id="hsql.url.mem" value="memory" set="true"/>
+				<choice txt="File" id="hsql.url.file" value="file"/> 
+  			</spec>
+		</field>
+
+		<field type="text" align="left" variable="hsql.url.file.name"  conditionid="hsqlParametersCondition">
+			<spec txt="Enter file Name : " size="12" set=" " id="hsqldb.file.name"/>
+			<validator class="com.izforge.izpack.panels.userinput.validator.NotEmptyValidator" txt="Invalid name!"/> 
+		</field> 
+
+		<field type="space"/>
+		<field type="space"/>
+		<field type="space"/>
+		<field type="space"/>
+		<field type="staticText" align="left" conditionid="hsqlParametersCondition"
+       			txt=" "
+       			id="staticText.hsql.url.name"/> 
+	 
+		
+	</panel>	
     <panel id="dbase.connection.panel" order="0" summaryKey="database.summaryKey"> 
         <field type="space"/>
         <field type="title" id="title.database.panel" txt="Specify credentials data for accessing Database server" bold="true" size="1" />
-        <field type="combo" variable="db.type.selection" revalidate="yes">
+        <!--> <field type="combo" variable="db.type.selection" revalidate="yes">
             <description align="left" txt="Select your Database type" id="db.type.selection.description"/>
             <spec> 
                 <choice txt="mysql" value="mysql"/>
-            <!--><choice txt="postgres" value="postgres"/>
-				<choice txt="hsql" value="hsql"/> <-->
+           <choice txt="postgres" value="postgres"/>
+				<choice txt="hsql" value="hsql"/> 
 			</spec>
-		</field>
+		</field> <-->
 		
 		<!-- Host -->
-		<field type="text" align="left" variable="db.hostname" tooltip="db.hostname.tt">>
+		<field type="text" align="left" variable="db.hostname" tooltip="db.hostname.tt">
 			<spec txt="Enter Server Host Name : " size="12" set="localhost" id="db.host.txt"/>
 			<validator class="com.izforge.izpack.panels.userinput.validator.NotEmptyValidator" txt="Invalid host name!">
 			</validator>
