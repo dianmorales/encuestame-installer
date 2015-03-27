@@ -50,6 +50,8 @@ public class JDBCConnectionValidator implements DataValidator {
     /** **/
     private String dbPassword; 
 
+    private String urlType; 
+
     /**
      *  Validate Database JDBC Connection
      * @param argsData
@@ -66,15 +68,16 @@ public class JDBCConnectionValidator implements DataValidator {
             dbName = argsData.getVariable("db.name");
             dbUser = argsData.getVariable("db.username");
             dbPassword = argsData.getVariable("db.password");
-
+            urlType = argsData.getVariable("db.type.url.connection");
+          
             log.debug("******************************************************************************************");
             log.debug("User=" + dbUser + " password=" + dbPassword + " port=" + dbPort
                     + " host=" + dbHostname + " database=" + dbName);
             log.debug("******************************************************************************************");
             //2- Register JDBC Driver classname
-            registerJDBCDriver();
+            registerJDBCDriver(dbType);
             try {
-                String url = "jdbc:mysql://"+dbHostname+":"+dbPort+"/"+dbName +"?createDatabaseIfNotExist=true";
+                String url = "jdbc:"+urlType+"://"+dbHostname+":"+dbPort+"/"+dbName +"?createDatabaseIfNotExist=true";
                 System.out.println("URL --------------->" +url);
                 connection = DriverManager
                         .getConnection(url,dbUser, dbPassword);
@@ -96,9 +99,13 @@ public class JDBCConnectionValidator implements DataValidator {
      *
      * @throws Throwable
      */
-    private void registerJDBCDriver() throws Throwable {
+    private void registerJDBCDriver(final String databasetype) throws Throwable {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            if(databasetype.equals("mysql")){
+                Class.forName("com.mysql.jdbc.Driver");
+            } else { 
+                 Class.forName("org.postgresql.Driver");
+            } 
         } catch (ClassNotFoundException e) {
             log.debug("Where is your MySQL JDBC Driver?");
             e.printStackTrace();

@@ -10,24 +10,24 @@
 		</field>
 		<field type="space"/>
 		<field type="divider"/>
-		<field type="radio" variable="select.hsql.url.radio" conditionid="database.hsql.radio.selection">
+		<field type="radio" variable="select.hsql.url.radio" conditionid="hsql.db.selected">
 			<description align="left" txt="Select the url" id="select.hsql.url.txt"/>
   			<spec>
-				<choice txt="In memory" id="hsql.url.mem" value="memory" set="true"/>
+				<choice txt="In memory" id="hsql.url.mem" value="mem" set="true"/>
 				<choice txt="File" id="hsql.url.file" value="file"/> 
   			</spec>
 		</field>
 
-		<field type="text" align="left" variable="hsql.url.file.name"  conditionid="hsqlParametersCondition">
+		<field type="text" align="left" variable="hsql.url.file.name"  conditionid="show.hsql.filename.box">
 			<spec txt="Enter file Name : " size="12" set=" " id="hsqldb.file.name"/>
 			<validator class="com.izforge.izpack.panels.userinput.validator.NotEmptyValidator" txt="Invalid name!"/> 
-		</field> 
+		</field>   
 
 		<field type="space"/>
 		<field type="space"/>
 		<field type="space"/>
 		<field type="space"/>
-		<field type="staticText" align="left" conditionid="hsqlParametersCondition"
+		<field type="staticText" align="left" conditionid="show.hsql.filename.box"
        			txt=" "
        			id="staticText.hsql.url.name"/> 
 	 
@@ -82,23 +82,7 @@
 			</spec>
 			<validator class="com.izforge.izpack.panels.userinput.validator.PasswordEqualityValidator"
 				txt="Password not match" id="Password do not match" />
-		</field>   
-
-			<!--<<field type="combo"  variable="db.datasource.classname"> 
-			<spec>
-			choice txt="com.mysql.jdbc.Driver" value="com.mysql.jdbc.Driver" conditionid="mysql.db.selected"/>
-				<choice txt="org.hsqldb.jdbcDriver" value="org.hsqldb.jdbcDriver" conditionid="hsql.db.selected"/> 
-				<choice txt="org.postgres.jdbcDriver" value="org.postgres.jdbcDriver" conditionid="postgres.db.selected"/>/>
-			</spec>
-		</field>     
-
-		<field type="combo"  variable="db.datasource.dialect"> 
-			<spec>
-				<choice txt="org.hibernate.dialect.MySQLInnoDBDialect" value="org.hibernate.dialect.MySQLInnoDBDialect" conditionid="mysql.ds.cn.selected"/>
-				<choice txt="org.hibernate.dialect.HSQLDialect" value="org.hibernate.dialect.HSQLDialect" conditionid="hsql.ds.cn.selected"/> 
-				<choice txt="org.hibernate.dialect.PostgreSQLDialect" value="org.hibernate.dialect.PostgreSQLDialect" conditionid="postgres.ds.cn.selected"/>/> 
-			</spec>
-		</field>   -->  
+		</field>    
 	</panel>  
 	<panel id="recaptcha" order="1" summaryKey="recaptcha.summaryKey"> 
         <field type="title" id="captcha.configuration.panel" txt="Captcha Configuration" bold="true" size="1" />
