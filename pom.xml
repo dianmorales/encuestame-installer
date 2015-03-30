@@ -12,6 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
        <!--> <izpack.standalone.compiler.version>4.3.4</izpack.standalone.compiler.version><-->
         <izpack.version>5.0.0-rc5-SNAPSHOT</izpack.version>
+        <izpack2.version>5.0.0-rc5</izpack2.version>
         <version.log4j>1.2.17</version.log4j>
         <version.commons.logging>1.2</version.commons.logging>
         <izpack.staging>${project.build.directory}/staging</izpack.staging>
@@ -48,7 +49,7 @@
       <timezone>+7</timezone>
     </developer>
   </developers>
-   
+
  <dependencies>
       <dependency>
           <groupId>org.codehaus.izpack</groupId>
@@ -105,7 +106,7 @@
         <plugin>
           <groupId>org.codehaus.izpack</groupId>
           <artifactId>izpack-maven-plugin</artifactId>
-          <version>${izpack.version}</version>
+          <version>${izpack2.version}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -131,7 +132,7 @@
     </pluginManagement>
 
     <plugins>
-    
+
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <executions>
@@ -142,7 +143,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${izpack.staging}</outputDirectory>              
+              <outputDirectory>${izpack.staging}</outputDirectory>
               <!-- recursive copy of all resource under src/main/izpack. -->
               <resources>
                 <resource>
@@ -151,7 +152,7 @@
                     <include>**/*</include>
                   </includes>
                   <filtering>false</filtering>
-                </resource>                
+                </resource>
               </resources>
             </configuration>
           </execution>
@@ -178,7 +179,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin> 
+            </plugin>
             <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-antrun-plugin</artifactId>
@@ -237,7 +238,7 @@
                 </artifactItems>
                 <!-- other configurations here -->
               </configuration>
-            </execution> 
+            </execution>
             <!-- COPY mysql-connector-java a lib -->
           <execution>
             <id>copy-mysqlconnector-jar</id>
@@ -289,7 +290,7 @@
                 </artifactItem>
               </artifactItems>
             </configuration>
-          </execution> 
+          </execution>
            <execution>
             <id>copy-postgres-connector-jar</id>
             <phase>prepare-package</phase>
@@ -309,7 +310,7 @@
           </execution>
        </executions>
       </plugin>
-      
+
       <!-- Use as the base directory -  izpack-maven-plugin (this is our staging area) -->
 
       <plugin>
@@ -344,8 +345,8 @@
             <configuration>
                 <archive>
                     <manifest>
-                         
-                        <mainClass>org.encuestame.installer.izpack.JDBCConnectionValidator</mainClass> 
+
+                        <mainClass>org.encuestame.installer.izpack.JDBCConnectionValidator</mainClass>
                     </manifest>
                 </archive>
                 <finalName>jdbcConnectionValidator</finalName>
