@@ -20,7 +20,7 @@
         <version.tomcat>v7.0.59</version.tomcat>
         <tomcat>7</tomcat>
         <version.tomcat.file>7.0.59</version.tomcat.file>
-        <version.encuestame>1.5.0-SNAPSHOT</version.encuestame>
+        <version.encuestame>1.5.0</version.encuestame>
         <maven-antrun-plugin>1.6</maven-antrun-plugin>
         <version.mysql.connector>5.1.21</version.mysql.connector>
         <version.postgres.connector>9.2-1003-jdbc3</version.postgres.connector>
