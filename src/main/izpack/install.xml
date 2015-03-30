@@ -171,12 +171,7 @@
             <condition type="ref" refid="postgres.db.selected"/>
             <condition type="ref" refid="postgres.classname.selected" />
         </condition> 
-    </conditions>
-    <condition type="variable" id="install.windows">
-            <name>izpack.windowsinstall</name>
-            <value>true</value>
-        </condition>
-    
+    </conditions> 
 
     <resources>
         <!-->Imagen<-->
@@ -243,7 +238,7 @@
             <description>Tomcat container.</description>
             <fileset dir="tomcat/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/tomcat"/>
         </pack>
-
+ <!-->
         <pack name="tomcat-win-32" preselected="yes" required="no"  >
             <description>Tomcat WIN 32 container.</description>
             <fileset dir="win32/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/win32"/>
@@ -252,7 +247,7 @@
         <pack name="tomcat-win-64" preselected="no" required="no"  >
             <description>Tomcat WIN 32 container.</description>
             <fileset dir="win64/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/win64"/>
-        </pack>
+        </pack><-->
 
         <pack name="Basic Files" preselected="no" required="yes">
             <description>Basic Files </description>
