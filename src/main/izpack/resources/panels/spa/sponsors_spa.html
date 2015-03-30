@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Welcome Panel to ${application.name} Setup</title> 
+	</head>
+
+	<body> 
+	 <div> 
+		<a>${application.name}</a>
+		<b>Version  </b> ${application.version}
+			Projecto alojado Github: <a href="${encuestame.site}">${encuestame.site}</a>
+			<br>Autores :
+			<ul>
+				<li><a href="https://github.com/dianmorales">${application.contributor.backend}</a></li>
+				<li><a href="https://github.com/jotadeveloper">${application.contributor.frontend}</a></li>
+				<li><a href="https://github.com/orgs/encuestame/people">Contributors :</a></li>
+				
+			</ul>
+		<b>Contacto : </b>${encuestame.contact.email}
+		<b><a href="{application.documentation.url}"></a>Documentation : </b> 
+	</div>
+
+	<div id="sponsors">
+		<img src="atlassian">
+		<img src="jetbrain">
+	</div>
+	</body>
+</html>

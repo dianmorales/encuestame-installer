@@ -29,6 +29,8 @@
         <application.contributor.backend>Diana Paola Morales</application.contributor.backend>
         <application.contributor.frontend>Juan Carlos Picado</application.contributor.frontend>
         <application.version>Encuestame Installer 1.0</application.version>
+        <application.documentation.url>http://www.encuestame.org/wiki/display/DOC/Encuestame+Documentation</application.documentation.url>
+        <application.documentation.recaptcha>http://www.encuestame.org/wiki/display/DOC/Encuestame+Documentation</application.documentation.recaptcha>
     </properties>
 
   <!-- Developers-->
@@ -186,19 +188,20 @@
                     <id>unpack</id>
                     <configuration>
                         <tasks>
-                            <untar compression="gzip" src="${izpack.staging}/apache-tomcat-${version.tomcat.file}.tar.gz" dest="${izpack.staging}/tomcat" /> 
-                        </tasks>  
+                            <untar compression="gzip" src="${izpack.staging}/apache-tomcat-${version.tomcat.file}.tar.gz" dest="${izpack.staging}/tomcat" />
+                            <mkdir dir="${izpack.staging}/home"/>
+                        </tasks>
                     </configuration>
                     <phase>process-resources</phase>
                     <goals>
                         <goal>run</goal>
                     </goals>
-               </execution> 
+               </execution>
             </executions>
           </plugin>
       <plugin>
        <artifactId>maven-dependency-plugin</artifactId>
-          <executions>         
+          <executions>
              <execution>
                <!-- copy izpack custom (custom panels, etc.) jars to izpack staging custom -->
                <id>copy-izpack-dependencies</id>
