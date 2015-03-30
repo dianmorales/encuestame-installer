@@ -172,6 +172,11 @@
             <condition type="ref" refid="postgres.classname.selected" />
         </condition> 
     </conditions>
+    <condition type="variable" id="install.windows">
+            <name>izpack.windowsinstall</name>
+            <value>true</value>
+        </condition>
+    
 
     <resources>
         <!-->Imagen<-->
@@ -194,7 +199,7 @@
         <res id="HTMLInfoPanel.sponsors_spa" src="resources/panels/spa/sponsors_spa.html"/>
 
 
-        <res id="userInputSpec.xml" src="resources/userInputSpec.xml"/>
+        <res id="userInputSpec.xml" src="resources/userinputSpec.xml"/>
         
         <!-->Splash Image Resource
         <res id="Splash.image" src="resources/logos-enme/vertical/encuestame_v_small_alpha.png"/><-->
@@ -239,7 +244,17 @@
             <fileset dir="tomcat/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/tomcat"/>
         </pack>
 
-        <pack name="Basic Files" preselected="yes" required="yes">
+        <pack name="tomcat-win-32" preselected="yes" required="no"  >
+            <description>Tomcat WIN 32 container.</description>
+            <fileset dir="win32/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/win32"/>
+        </pack>
+
+        <pack name="tomcat-win-64" preselected="no" required="no"  >
+            <description>Tomcat WIN 32 container.</description>
+            <fileset dir="win64/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/win64"/>
+        </pack>
+
+        <pack name="Basic Files" preselected="no" required="yes">
             <description>Basic Files </description>
             <file src="property-files/encuestame-config-custom.properties" targetdir="$INSTALL_PATH/"
                   override="true" />
