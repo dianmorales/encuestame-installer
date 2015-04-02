@@ -22,8 +22,9 @@
         <variable name="hsql.directory" value="hsqldb"/> 
         <variable name="db.type.url.connection" value="hsqldb" condition="hsql.db.selected"/>
         <variable name="db.type.url.connection" value="mysql" condition="mysql.db.selected"/>
-        <variable name="db.type.url.connection" value="postgresql" condition="postgres.db.selected"/> 
-        
+        <variable name="db.type.url.connection" value="postgresql" condition="postgres.db.selected"/>   
+        <variable name="TargetPanel.dir.windows" value="$USER_HOME"/>
+        <variable name="TargetPanel.dir.unix" value="$USER_HOME"/>
     </variables>
 
 
@@ -170,6 +171,11 @@
         <condition type="and" id="postgres.db.classname.condition">
             <condition type="ref" refid="postgres.db.selected"/>
             <condition type="ref" refid="postgres.classname.selected" />
+        </condition>  
+        <!-->The Packselection Condition can be used to check if a pack has been selected <-->
+         <condition type="or" id="or.installation">
+            <condition type="ref" refid="izpack.macinstall"/>
+            <condition type="ref" refid="izpack.linuxinstall" />
         </condition> 
     </conditions> 
 
@@ -219,45 +225,61 @@
         <panel classname="HTMLHelloPanel"/>
         <panel classname="HTMLInfoPanel"/>
         <panel classname="LicencePanel"/>
-        <panel classname="TargetPanel" id="targetpanel"/>
+        <panel classname="TargetPanel" id="targetpanel"/> 
         <panel classname="UserInputPanel" id="select.database.panel"/>
         <panel classname="UserInputPanel" id="dbase.connection.panel" condition="or.database.condition">
             <validator classname="org.encuestame.installer.izpack.JDBCConnectionValidator"/>
         </panel>
-        <panel classname="UserInputPanel" id="recaptcha"/>
-        <panel classname="DataCheckPanel" /> 
-        <panel classname="PacksPanel" id="enme_pack_select"/>
-        <panel classname="InstallPanel" id="installpanel"/>
+        <panel classname="UserInputPanel" id="recaptcha"/> 
+        <!--><panel classname="PacksPanel" id="enme_pack_select"/><-->
+        <panel classname="TreePacksPanel"/> 
+        <panel classname="InstallPanel" id="installpanel"/> 
         <panel classname="SummaryPanel" id="summarypanel"/>
         <panel classname="HTMLInfoPanel" id="sponsors"/>
         <panel classname="SimpleFinishPanel"/>
     </panels>
 
-    <packs>
-        <pack name="tomcat" preselected="yes" required="no">
-            <description>Tomcat container.</description>
-            <fileset dir="tomcat/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/tomcat"/>
-        </pack>
- <!-->
-        <pack name="tomcat-win-32" preselected="yes" required="no"  >
-            <description>Tomcat WIN 32 container.</description>
-            <fileset dir="win32/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/win32"/>
+    <packs>  
+        <pack name="Tomcat-Web-container" required="no" preselect="yes">
+            <description> Select web container according your OS.</description>
         </pack>
 
-        <pack name="tomcat-win-64" preselected="no" required="no"  >
-            <description>Tomcat WIN 32 container.</description>
-            <fileset dir="win64/apache-tomcat-7.0.59" targetdir="$INSTALL_PATH/win64"/>
-        </pack><-->
+        <pack name="linux-mac" preselected="yes" required="no" parent="Tomcat-Web-container" condition="or.installation">
+            <description>Server to be installed on Linux or Mac operating systems</description>
+             
+            <file src="apache-tomcat-7.0.59.zip" targetdir="$INSTALL_PATH/" unpack="true"/> 
+              
+        </pack>
+
+        <pack name="windows-32bits" preselected="no" required="no"   parent="Tomcat-Web-container" condition="izpack.windowsinstall">
+            <onSelect name="!windows-64bits"/> 
+            <description>Server to be installed on Windows 32 bits</description> 
+            <file src="apache-tomcat-7.0.59-windows-x86.zip" targetdir="$INSTALL_PATH/" unpack="true" /> 
+        </pack>
+
+        <pack name="windows-64bits" preselected="no" required="no"  parent="Tomcat-Web-container" condition="izpack.windowsinstall">
+            <description>Server to be installed on Windows 64 bits.</description>  
+            <onSelect name="!windows-32bits"/> 
+            <file src="apache-tomcat-7.0.59-windows-x64.zip" targetdir="$INSTALL_PATH/" unpack="true"/> 
+           
+        </pack> 
 
         <pack name="Basic Files" preselected="no" required="yes">
             <description>Basic Files </description>
-            <file src="property-files/encuestame-config-custom.properties" targetdir="$INSTALL_PATH/"
+
+            <file src="property-files/encuestame-config-custom.properties" targetdir="$INSTALL_PATH/apache-tomcat-7.0.59/lib/"
                   override="true" />
+            <file src="property-files/encuestame-config-custom.properties" targetdir="$INSTALL_PATH/home"
+                  override="true" />
+
+            <parsable targetfile="$INSTALL_PATH/apache-tomcat-7.0.59/lib/encuestame-config-custom.properties" type="javaprop"/>
             <parsable targetfile="$INSTALL_PATH/encuestame-config-custom.properties" type="javaprop"/>
+
             <file src="home/" targetdir="$INSTALL_PATH/"/>
             <file src="resources/License.txt" targetdir="$INSTALL_PATH/"/>
-            <file src="resources/Readme.txt" targetdir="$INSTALL_PATH/"/>
-            <file src="war/encuestame.war" targetdir="$INSTALL_PATH/tomcat/webapps"/>
+            <file src="resources/Readme.txt" targetdir="$INSTALL_PATH/"/> 
+            <file src="war/encuestame.war" targetdir="$INSTALL_PATH/apache-tomcat-7.0.59/webapps"/> 
+            
         </pack>
     </packs>
 </installation>
