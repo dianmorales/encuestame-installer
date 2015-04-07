@@ -21,6 +21,8 @@
         <tomcat>7</tomcat>
         <version.tomcat.file>7.0.59</version.tomcat.file>
         <version.encuestame>1.5.0</version.encuestame>
+        <windows.x64>windows-x86</windows.x64>
+        <windows.x86>windows-x64</windows.x86>
         <maven-antrun-plugin>1.6</maven-antrun-plugin>
         <version.mysql.connector>5.1.21</version.mysql.connector>
         <version.postgres.connector>9.2-1003-jdbc3</version.postgres.connector>
@@ -166,17 +168,20 @@
                 <version>1.0-beta-1</version>
                 <executions>
                     <execution>
-                        <id>download-dojo</id>
+                         <id>download-tomcat</id>
                         <phase>generate-resources</phase>
                         <goals>
-                            <goal>download-single</goal>
+                            <goal>download</goal>
                         </goals>
+
                         <configuration>
-                            <serverId>tomcat</serverId>
-                            <url>http://mirror2.klaus-uwe.me/apache/tomcat/tomcat-${tomcat}/${version.tomcat}/bin</url>
-                            <fromFile>apache-tomcat-${version.tomcat.file}.tar.gz</fromFile>
-                            <toDir>${izpack.staging}</toDir>
+                          <serverId>tomcat</serverId>
+                          <url>http://mirror2.klaus-uwe.me/apache/tomcat/tomcat-${tomcat}/${version.tomcat}/</url>
+                            <excludes>apache-tomcat-7.0.59-deployer.tar.gz, apache-tomcat-7.0.59-deployer.zip, apache-tomcat-7.0.59-fulldocs.tar.gz,apache-tomcat-7.0.59-windows-i64.zip,apache-tomcat-7.0.59.exe,apache-tomcat-7.0.59.tar.gz, README.html, extras/, embed/</excludes>
+                          <fromDir>bin</fromDir>
+                          <toDir>${izpack.staging}</toDir>
                         </configuration>
+
                     </execution>
                 </executions>
             </plugin>
@@ -189,7 +194,9 @@
                     <id>unpack</id>
                     <configuration>
                         <tasks>
-                            <untar compression="gzip" src="${izpack.staging}/apache-tomcat-${version.tomcat.file}.tar.gz" dest="${izpack.staging}/tomcat" />
+                            <!--><unzip src="${izpack.staging}/apache-tomcat-${version.tomcat.file}.zip" dest="${izpack.staging}/tomcat" />
+                            <unzip src="${izpack.staging}/apache-tomcat-${version.tomcat.file}-${windows.x64}.zip" dest="${izpack.staging}/tomcat-win64" />
+                            <unzip src="${izpack.staging}/apache-tomcat-${version.tomcat.file}-${windows.x86}.zip" dest="${izpack.staging}/tomcat-win32" /><-->
                             <mkdir dir="${izpack.staging}/home"/>
                         </tasks>
                     </configuration>
